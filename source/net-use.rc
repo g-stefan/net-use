@@ -1,0 +1,17 @@
+//
+// Net Use
+//
+// Copyright (c) 2020 Grigore Stefan <g_stefan@yahoo.com>
+// Created by Grigore Stefan <g_stefan@yahoo.com>
+//
+// MIT License (MIT) <http://opensource.org/licenses/MIT>
+//
+
+#include "xyo-application-version--os-windows-rc.hpp"
+#include "net-use-copyright.hpp"
+#include "net-use-version.hpp"
+
+1  ICON "net-use.ico"
+
+XYO_APPLICATION_VERSION_INFO(NET_USE,"net-use.exe","Mount network drive")
+

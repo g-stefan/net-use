@@ -1,0 +1,4 @@
+--exe net-use
+--use-path=source
+--use-project=xyo.static
+--use-lib=netapi32
