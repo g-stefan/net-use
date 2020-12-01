@@ -193,7 +193,7 @@ namespace Main {
 
 		retV=NetUseAdd(nullptr, 2, (LPBYTE)&loginInfo, &parmErr);
 		if(retV!=NERR_Success) {
-			printf("Error: %d\n", parmErr);
+			printf("Error: %u\n", parmErr);
 			return 1;
 		};
 
