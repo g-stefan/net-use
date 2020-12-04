@@ -3,6 +3,6 @@ rem Public domain
 rem http://unlicense.org/
 rem Created by Grigore Stefan <g_stefan@yahoo.com>
 
-echo -^> clean-local-release net-use
+echo -^> clean-release net-use
 
 if exist release\ rmdir /Q /S release
