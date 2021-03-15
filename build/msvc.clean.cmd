@@ -3,8 +3,9 @@ rem Public domain
 rem http://unlicense.org/
 rem Created by Grigore Stefan <g_stefan@yahoo.com>
 
-echo -^> sign net-use
+echo -^> clean net-use
 
-pushd bin
-for /r %%i in (*.exe) do call grigore-stefan.sign "Net use" "%%i"
-popd
+if exist output\ rmdir /Q /S output
+if exist temp\ rmdir /Q /S temp
+
+
