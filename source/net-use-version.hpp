@@ -10,10 +10,10 @@
 #ifndef NET_USE_VERSION_HPP
 #define NET_USE_VERSION_HPP
 
-#define NET_USE_VERSION_ABCD                1,7,0,20
-#define NET_USE_VERSION_STR                 "1.7.0"
+#define NET_USE_VERSION_ABCD                1,8,0,20
+#define NET_USE_VERSION_STR                 "1.8.0"
 #define NET_USE_VERSION_STR_BUILD           "20"
-#define NET_USE_VERSION_STR_DATETIME        "2021-11-15 16:51:55"
+#define NET_USE_VERSION_STR_DATETIME        "2021-11-22 13:35:06"
 
 #ifndef XYO_RC
 
