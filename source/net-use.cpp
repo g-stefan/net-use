@@ -12,7 +12,7 @@
 #include <string.h>
 
 #ifndef SECURITY_WIN32
-#define SECURITY_WIN32
+#	define SECURITY_WIN32
 #endif
 
 #include <windows.h>
@@ -29,16 +29,15 @@ namespace Main {
 
 	using namespace XYO;
 
-	class Application :
-		public virtual IMain {
+	class Application : public virtual IMain {
 			XYO_DISALLOW_COPY_ASSIGN_MOVE(Application);
-		protected:
 
+		protected:
 			void showUsage();
 			void showLicense();
 
 		public:
-			inline Application() {};
+			inline Application(){};
 
 			int main(int cmdN, char *cmdS[]);
 
@@ -50,16 +49,15 @@ namespace Main {
 		printf("version %s build %s [%s]\n", NetUse::Version::version(), NetUse::Version::build(), NetUse::Version::datetime());
 		printf("%s\n\n", NetUse::Copyright::fullCopyright());
 		printf("%s\n",
-			"usage:\n"
-			"    net-use --local=... --remote=... --username=... --password=...\n\n"
-			"options:\n"
-			"    --license                                      show license\n"
-			"    --local=[local device name]                    [ K: ]\n"
-			"    --remote=[share name of the remote resource]   [ \\\\192.168.0.1\\ShareName ]\n"
-			"    --username=[username]\n"
-			"    --password=[password]\n"
-			"    @[file name]                                   use filename content as options\n"
-		);
+		       "usage:\n"
+		       "    net-use --local=... --remote=... --username=... --password=...\n\n"
+		       "options:\n"
+		       "    --license                                      show license\n"
+		       "    --local=[local device name]                    [ K: ]\n"
+		       "    --remote=[share name of the remote resource]   [ \\\\192.168.0.1\\ShareName ]\n"
+		       "    --username=[username]\n"
+		       "    --password=[password]\n"
+		       "    @[file name]                                   use filename content as options\n");
 	};
 
 	void Application::showLicense() {
@@ -84,13 +82,13 @@ namespace Main {
 			OPT_HAS_PASSWORD = 0x08
 		};
 
-		int OPT_HAS_ALL=0x00;
-		OPT_HAS_ALL|=OPT_HAS_LOCAL;
-		OPT_HAS_ALL|=OPT_HAS_REMOTE;
-		OPT_HAS_ALL|=OPT_HAS_USERNAME;
-		OPT_HAS_ALL|=OPT_HAS_PASSWORD;
+		int OPT_HAS_ALL = 0x00;
+		OPT_HAS_ALL |= OPT_HAS_LOCAL;
+		OPT_HAS_ALL |= OPT_HAS_REMOTE;
+		OPT_HAS_ALL |= OPT_HAS_USERNAME;
+		OPT_HAS_ALL |= OPT_HAS_PASSWORD;
 
-		int optHas=0x00;
+		int optHas = 0x00;
 
 		// get options from file [ @filename ]
 
@@ -102,9 +100,9 @@ namespace Main {
 
 		for (i = 1; i < cmdN; ++i) {
 			if (StringCore::beginWith(cmdS[i], "@")) {
-				if(Shell::fileGetContents(&cmdS[i][1], content)) {
+				if (Shell::fileGetContents(&cmdS[i][1], content)) {
 					Shell::mainArgsSet(content, cmdNX, cmdSX);
-					for(m = 0; m < cmdNX; ++m) {
+					for (m = 0; m < cmdNX; ++m) {
 						cmdLine.push(cmdSX[m]);
 					};
 					Shell::mainArgsDelete(cmdNX, cmdSX);
@@ -122,7 +120,7 @@ namespace Main {
 			if (StringCore::beginWith(cmdLine[i], "--")) {
 				opt = cmdLine[i].index(2);
 				optValue = "";
-				if(String::indexOf(opt, "=", 0, optIndex)) {
+				if (String::indexOf(opt, "=", 0, optIndex)) {
 					optValue = String::substring(opt, optIndex + 1);
 					opt = String::substring(opt, 0, optIndex);
 				};
@@ -135,30 +133,30 @@ namespace Main {
 					return 0;
 				};
 				if (opt == "local") {
-					if(optValue.length()>0) {
-						optHas|=OPT_HAS_LOCAL;
-						local=optValue;
+					if (optValue.length() > 0) {
+						optHas |= OPT_HAS_LOCAL;
+						local = optValue;
 					};
 					continue;
 				};
 				if (opt == "remote") {
-					if(optValue.length()>0) {
-						optHas|=OPT_HAS_REMOTE;
-						remote=optValue;
+					if (optValue.length() > 0) {
+						optHas |= OPT_HAS_REMOTE;
+						remote = optValue;
 					};
 					continue;
 				};
 				if (opt == "username") {
-					if(optValue.length()>0) {
-						optHas|=OPT_HAS_USERNAME;
-						username=optValue;
+					if (optValue.length() > 0) {
+						optHas |= OPT_HAS_USERNAME;
+						username = optValue;
 					};
 					continue;
 				};
 				if (opt == "password") {
-					if(optValue.length()>0) {
-						optHas|=OPT_HAS_PASSWORD;
-						password=optValue;
+					if (optValue.length() > 0) {
+						optHas |= OPT_HAS_PASSWORD;
+						password = optValue;
 					};
 					continue;
 				};
@@ -166,7 +164,7 @@ namespace Main {
 			};
 		};
 
-		if(optHas!=OPT_HAS_ALL) {
+		if (optHas != OPT_HAS_ALL) {
 			showUsage();
 			return 0;
 		};
@@ -175,24 +173,24 @@ namespace Main {
 		NET_API_STATUS retV;
 		DWORD parmErr;
 
-		StringUtf16 ui2_local=TUtfConvert<utf16, utf8>::from(local);
-		StringUtf16 ui2_remote=TUtfConvert<utf16, utf8>::from(remote);
-		StringUtf16 ui2_username=TUtfConvert<utf16, utf8>::from(username);
-		StringUtf16 ui2_password=TUtfConvert<utf16, utf8>::from(password);
-		StringUtf16 ui2_domainname=TUtfConvert<utf16, utf8>::from("");
+		StringUtf16 ui2_local = TUtfConvert<utf16, utf8>::from(local);
+		StringUtf16 ui2_remote = TUtfConvert<utf16, utf8>::from(remote);
+		StringUtf16 ui2_username = TUtfConvert<utf16, utf8>::from(username);
+		StringUtf16 ui2_password = TUtfConvert<utf16, utf8>::from(password);
+		StringUtf16 ui2_domainname = TUtfConvert<utf16, utf8>::from("");
 
-		loginInfo.ui2_local=(LPWSTR)ui2_local.value();
-		loginInfo.ui2_remote=(LPWSTR)ui2_remote.value();
-		loginInfo.ui2_password=(LPWSTR)ui2_password.value();
-		loginInfo.ui2_status=0;
-		loginInfo.ui2_asg_type=USE_DISKDEV;
-		loginInfo.ui2_refcount=0;
-		loginInfo.ui2_usecount=1;
-		loginInfo.ui2_username=(LPWSTR)ui2_username.value();
-		loginInfo.ui2_domainname=(LPWSTR)ui2_domainname.value();
+		loginInfo.ui2_local = (LPWSTR)ui2_local.value();
+		loginInfo.ui2_remote = (LPWSTR)ui2_remote.value();
+		loginInfo.ui2_password = (LPWSTR)ui2_password.value();
+		loginInfo.ui2_status = 0;
+		loginInfo.ui2_asg_type = USE_DISKDEV;
+		loginInfo.ui2_refcount = 0;
+		loginInfo.ui2_usecount = 1;
+		loginInfo.ui2_username = (LPWSTR)ui2_username.value();
+		loginInfo.ui2_domainname = (LPWSTR)ui2_domainname.value();
 
-		retV=NetUseAdd(nullptr, 2, (LPBYTE)&loginInfo, &parmErr);
-		if(retV!=NERR_Success) {
+		retV = NetUseAdd(nullptr, 2, (LPBYTE)&loginInfo, &parmErr);
+		if (retV != NERR_Success) {
 			printf("Error: %u\n", parmErr);
 			return 1;
 		};
@@ -208,4 +206,3 @@ namespace Main {
 };
 
 XYO_APPLICATION_MAIN_STD(Main::Application);
-

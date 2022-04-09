@@ -10,11 +10,11 @@
 #ifndef NET_USE_COPYRIGHT_HPP
 #define NET_USE_COPYRIGHT_HPP
 
-#define NET_USE_COPYRIGHT            "Copyright (c) Grigore Stefan"
-#define NET_USE_PUBLISHER            "Grigore Stefan"
-#define NET_USE_COMPANY              NET_USE_PUBLISHER
-#define NET_USE_CONTACT              "g_stefan@yahoo.com"
-#define NET_USE_FULL_COPYRIGHT       NET_USE_COPYRIGHT " <" NET_USE_CONTACT ">"
+#define NET_USE_COPYRIGHT "Copyright (c) Grigore Stefan"
+#define NET_USE_PUBLISHER "Grigore Stefan"
+#define NET_USE_COMPANY NET_USE_PUBLISHER
+#define NET_USE_CONTACT "g_stefan@yahoo.com"
+#define NET_USE_FULL_COPYRIGHT NET_USE_COPYRIGHT " <" NET_USE_CONTACT ">"
 
 #ifndef XYO_RC
 
