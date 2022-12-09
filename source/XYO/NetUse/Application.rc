@@ -1,0 +1,13 @@
+// Net Use
+// Copyright (c) 2022 Grigore Stefan <g_stefan@yahoo.com>
+// MIT License (MIT) <http://opensource.org/licenses/MIT>
+// SPDX-FileCopyrightText: 2022 Grigore Stefan <g_stefan@yahoo.com>
+// SPDX-License-Identifier: MIT
+
+#include <XYO/NetUse/Application.rh>
+#include <XYO/NetUse/Copyright.rh>
+#include <XYO/NetUse/Version.rh>
+
+1  ICON "Application.ico"
+
+XYO_APPLICATION_VERSION_INFO(XYO_NetUse,"exec-cgi.exe","Execute php script as cgi")

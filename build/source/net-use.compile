@@ -1,4 +1,0 @@
---exe net-use
---use-project=xyo.static
---use-lib=netapi32
---output-bin-path-is-output

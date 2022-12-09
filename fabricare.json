@@ -1,0 +1,16 @@
+{
+	"project": {
+		"name":"net-use",
+		"type":"xyo-cpp",
+		"make" : "exe.static",
+		"SPDX-License-Identifier": "MIT",
+		"sourcePath" : "XYO/NetUse",
+		"outputPath" : "output",
+		"dependency" : [
+			"xyo-system"
+		],
+		"library" : [
+			"netapi32"
+		]
+	}
+}

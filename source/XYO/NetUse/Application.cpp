@@ -1,11 +1,8 @@
-//
 // Net Use
-//
-// Copyright (c) 2020-2022 Grigore Stefan <g_stefan@yahoo.com>
-// Created by Grigore Stefan <g_stefan@yahoo.com>
-//
+// Copyright (c) 2022 Grigore Stefan <g_stefan@yahoo.com>
 // MIT License (MIT) <http://opensource.org/licenses/MIT>
-//
+// SPDX-FileCopyrightText: 2022 Grigore Stefan <g_stefan@yahoo.com>
+// SPDX-License-Identifier: MIT
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -19,30 +16,12 @@
 #include <lm.h>
 #include <lmuse.h>
 
-#include "xyo.hpp"
+#include <XYO/NetUse/Application.hpp>
+#include <XYO/NetUse/Copyright.hpp>
+#include <XYO/NetUse/License.hpp>
+#include <XYO/NetUse/Version.hpp>
 
-#include "net-use-version.hpp"
-#include "net-use-license.hpp"
-#include "net-use-copyright.hpp"
-
-namespace Main {
-
-	using namespace XYO;
-
-	class Application : public virtual IMain {
-			XYO_DISALLOW_COPY_ASSIGN_MOVE(Application);
-
-		protected:
-			void showUsage();
-			void showLicense();
-
-		public:
-			inline Application(){};
-
-			int main(int cmdN, char *cmdS[]);
-
-			inline void initMemory();
-	};
+namespace XYO::NetUse {
 
 	void Application::showUsage() {
 		printf("net-use - mount network drive\n");
@@ -60,8 +39,17 @@ namespace Main {
 		       "    @[file name]                                   use filename content as options\n");
 	};
 
-	void Application::showLicense() {
-		printf("%s", NetUse::License::content());
+	void Application::showLicense() {		
+		printf("%s%s", NetUse::License::licenseHeader(), NetUse::License::licenseBody());		
+	};
+
+	void Application::showVersion() {
+		printf("version %s build %s [%s]\n", NetUse::Version::version(), NetUse::Version::build(), NetUse::Version::datetime());
+	};
+
+	void Application::initMemory() {
+		String::initMemory();
+		StringUTF16::initMemory();
 	};
 
 	int Application::main(int cmdN, char *cmdS[]) {
@@ -173,11 +161,11 @@ namespace Main {
 		NET_API_STATUS retV;
 		DWORD parmErr;
 
-		StringUtf16 ui2_local = TUtfConvert<utf16, utf8>::from(local);
-		StringUtf16 ui2_remote = TUtfConvert<utf16, utf8>::from(remote);
-		StringUtf16 ui2_username = TUtfConvert<utf16, utf8>::from(username);
-		StringUtf16 ui2_password = TUtfConvert<utf16, utf8>::from(password);
-		StringUtf16 ui2_domainname = TUtfConvert<utf16, utf8>::from("");
+		StringUTF16 ui2_local = TUTFConvert<utf16, utf8>::from(local);
+		StringUTF16 ui2_remote = TUTFConvert<utf16, utf8>::from(remote);
+		StringUTF16 ui2_username = TUTFConvert<utf16, utf8>::from(username);
+		StringUTF16 ui2_password = TUTFConvert<utf16, utf8>::from(password);
+		StringUTF16 ui2_domainname = TUTFConvert<utf16, utf8>::from("");
 
 		loginInfo.ui2_local = (LPWSTR)ui2_local.value();
 		loginInfo.ui2_remote = (LPWSTR)ui2_remote.value();
@@ -197,12 +185,8 @@ namespace Main {
 
 		return 0;
 	};
-
-	void Application::initMemory() {
-		String::initMemory();
-		StringUtf16::initMemory();
-	};
-
 };
 
-XYO_APPLICATION_MAIN_STD(Main::Application);
+#ifndef XYO_NetUse_LIBRARY
+XYO_APPLICATION_MAIN(XYO::NetUse::Application);
+#endif
