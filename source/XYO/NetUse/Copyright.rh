@@ -7,10 +7,9 @@
 #ifndef XYO_NetUse_COPYRIGHT_RH
 #define XYO_NetUse_COPYRIGHT_RH
 
-#define XYO_NetUse_COPYRIGHT "Copyright (c) 2022 Grigore Stefan"
+#define XYO_NetUse_COPYRIGHT "Copyright (c) 2022 Grigore Stefan <g_stefan@yahoo.com>"
 #define XYO_NetUse_PUBLISHER "Grigore Stefan"
 #define XYO_NetUse_COMPANY XYO_NetUse_PUBLISHER
 #define XYO_NetUse_CONTACT "g_stefan@yahoo.com"
-#define XYO_NetUse_FULL_COPYRIGHT XYO_NetUse_COPYRIGHT " <" XYO_NetUse_CONTACT ">"
 
 #endif
