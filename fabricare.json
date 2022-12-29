@@ -11,6 +11,8 @@
 		],
 		"library" : [
 			"netapi32"
-		]
+		],
+		"hasRelease" : true,
+		"githubRelease" : true
 	}
 }
