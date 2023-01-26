@@ -187,6 +187,6 @@ namespace XYO::NetUse {
 	};
 };
 
-#ifndef XYO_NetUse_LIBRARY
+#ifndef XYO_NETUSE_LIBRARY
 XYO_APPLICATION_MAIN(XYO::NetUse::Application);
 #endif
