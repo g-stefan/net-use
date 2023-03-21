@@ -26,7 +26,7 @@ namespace XYO::NetUse {
 	void Application::showUsage() {
 		printf("net-use - mount network drive\n");
 		printf("version %s build %s [%s]\n", NetUse::Version::version(), NetUse::Version::build(), NetUse::Version::datetime());
-		printf("%s\n\n", NetUse::Copyright::copyright());
+		printf("%s\n\n", NetUse::Copyright::copyright().c_str());
 		printf("%s\n",
 		       "usage:\n"
 		       "    net-use --local=... --remote=... --username=... --password=...\n\n"
@@ -40,7 +40,7 @@ namespace XYO::NetUse {
 	};
 
 	void Application::showLicense() {
-		printf("%s", NetUse::License::license());
+		printf("%s", NetUse::License::license().c_str());
 	};
 
 	void Application::showVersion() {
