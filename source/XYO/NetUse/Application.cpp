@@ -26,7 +26,7 @@ namespace XYO::NetUse {
 	void Application::showUsage() {
 		printf("net-use - mount network drive\n");
 		printf("version %s build %s [%s]\n", NetUse::Version::version(), NetUse::Version::build(), NetUse::Version::datetime());
-		printf("%s\n\n", NetUse::Copyright::copyright().c_str());
+		printf("%s\n\n", NetUse::Copyright::copyright());
 		printf("%s\n",
 		       "usage:\n"
 		       "    net-use --local=... --remote=... --username=... --password=...\n\n"
@@ -108,9 +108,9 @@ namespace XYO::NetUse {
 			if (StringCore::beginWith(cmdLine[i], "--")) {
 				opt = cmdLine[i].index(2);
 				optValue = "";
-				if (String::indexOf(opt, "=", 0, optIndex)) {
-					optValue = String::substring(opt, optIndex + 1);
-					opt = String::substring(opt, 0, optIndex);
+				if (StringX::indexOf(opt, "=", 0, optIndex)) {
+					optValue = StringX::substring(opt, optIndex + 1);
+					opt = StringX::substring(opt, 0, optIndex);
 				};
 				if (opt == "license") {
 					showLicense();
