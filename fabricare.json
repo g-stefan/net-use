@@ -5,7 +5,7 @@
 		"projects": [
 			{
 				"name" : "net-use",
-				"make" : "exe.static",
+				"make" : "exe",
 				"SPDX-License-Identifier": "MIT",
 				"sourcePath" : "XYO/NetUse",
 				"dependency" : [
